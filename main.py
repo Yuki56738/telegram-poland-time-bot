@@ -69,9 +69,11 @@ if __name__ == '__main__':
     app.add_handler(japan_handler)
     # app.run_polling()
     PORT = int(os.environ.get("PORT", "8443"))
+
     app.run_webhook(
         listen="0.0.0.0",
         port=PORT,
         url_path=TOKEN,
+
         webhook_url="https://telegram-webhook-yuki.herokuapp.com/" + TOKEN
     )
