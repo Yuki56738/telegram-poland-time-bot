@@ -56,24 +56,31 @@ async def japan(update: Update, ctx:ContextTypes.DEFAULT_TYPE):
 if __name__ == '__main__':
     # application = Bot(token="5479025637:AAHky8UZoT9EKrv5lRLELqjI-qs__ZsPxpo")
     # application = Application.builder().token("TOKEN").build()
-    app = ApplicationBuilder().token("5479025637:AAHky8UZoT9EKrv5lRLELqjI-qs__ZsPxpo").build()
+    # app = ApplicationBuilder().token("5479025637:AAHky8UZoT9EKrv5lRLELqjI-qs__ZsPxpo").build()
+    updater = Updater(TOKEN, use_context=True)
+    dp:Application = updater.dispatcher
     start_handler = CommandHandler('start', start)
     echo_handler = MessageHandler(filters.TEXT & (~filters.COMMAND), echo)
     ptime_handler = CommandHandler('poland', poland)
     ping_handler = CommandHandler('ping',ping)
     japan_handler = CommandHandler('japan', japan)
-    app.add_handler(start_handler)
-    app.add_handler(echo_handler)
-    app.add_handler(ping_handler)
-    app.add_handler(ptime_handler)
-    app.add_handler(japan_handler)
+    dp.add_handler(start_handler)
+    dp.add_handler(echo_handler)
+    dp.add_handler(ping_handler)
+    dp.add_handler(ptime_handler)
+    dp.add_handler(japan_handler)
     # app.run_polling()
     PORT = int(os.environ.get("PORT", "8443"))
-
-    app.run_webhook(
+    updater.start_webhook(
         listen="0.0.0.0",
-        port=PORT,
+        port=int(PORT),
         url_path=TOKEN,
-
         webhook_url="https://telegram-webhook-yuki.herokuapp.com/" + TOKEN
     )
+    # app.run_webhook(
+    #     listen="0.0.0.0",
+    #     port=PORT,
+    #     url_path=TOKEN,
+
+        # webhook_url="https://telegram-webhook-yuki.herokuapp.com/" + TOKEN
+    # )
