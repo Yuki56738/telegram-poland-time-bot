@@ -6,7 +6,9 @@ from telegram.ext import *
 from telegram import *
 import logging
 from datetime import *
+import os
 
+TOKEN = "5479025637:AAHky8UZoT9EKrv5lRLELqjI-qs__ZsPxpo"
 # from telegram.ext import Application
 
 """
@@ -63,4 +65,11 @@ if __name__ == '__main__':
     app.add_handler(ping_handler)
     app.add_handler(ptime_handler)
     app.add_handler(japan_handler)
-    app.run_polling()
+    # app.run_polling()
+    PORT = int(os.environ.get("PORT", "8443"))
+    app.run_webhook(
+        listen="0.0.0.0",
+        port=PORT,
+        url_path=TOKEN,
+        webhook_url="https://telegram-webhook-yuki.herokuapp.com/" + TOKEN
+    )
