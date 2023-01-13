@@ -53,6 +53,7 @@ async def echo(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await context.bot.send_message(chat_id=update.effective_chat.id, text=f"{result.text}\n{result2.text}")
 async def ping(update:Update, context: ContextTypes.DEFAULT_TYPE):
     await context.bot.send_message(chat_id=update.effective_chat.id, text="Pong!")
+    print(update.effective_chat.id)
 async def poland(update: Update, ctx:ContextTypes.DEFAULT_TYPE):
     # dtNow = datetime.now(timedelta=timedelta(hours=1))
     dtNow = datetime.now(tz=timezone.utc)
@@ -65,7 +66,7 @@ async def japan(update: Update, ctx:ContextTypes.DEFAULT_TYPE):
     await ctx.bot.send_message(chat_id=update.effective_chat.id, text=str(dtNowJapan))
 async def trans(update: Update, ctx: ContextTypes.DEFAULT_TYPE):
     msg = update.message.text
-    msg = re.sub("/trans ", "", msg)
+    msg = re.sub("/trans", "", msg)
     result = transletor.translate_text(msg, target_lang="EN-US")
     result2 = transletor.translate_text(msg, target_lang="JA")
     await ctx.bot.send_message(chat_id=update.effective_chat.id, text=f"{result}\n{result2}")
@@ -90,7 +91,11 @@ if __name__ == '__main__':
     # app.add_handler(trans_handler)
     # app.run_polling()
     PORT = int(os.environ.get("PORT", "8443"))
+    # app.bot.send_message(chat_id=1486744027, text="Hello.")
+    # app.bot.setWebhook(url="")
+
     app.run_polling()
+
     # updater.start_polling()
     # updater.start_webhook(
     #     listen="0.0.0.0",
@@ -98,9 +103,9 @@ if __name__ == '__main__':
     #     url_path=TOKEN,
     #     webhook_url="https://telegram-webhook-yuki.herokuapp.com/" + TOKEN
     # )
-    app.run_webhook(
-        listen="0.0.0.0",
-        port=PORT,
-        url_path=TOKEN,
-        webhook_url="https://tele-yuki.herokuapp.com/" + TOKEN
-    )
+    # app.run_webhook(
+    #     listen="0.0.0.0",
+    #     port=PORT,
+    #     url_path=TOKEN,
+    #     webhook_url="https://tele-yuki.herokuapp.com/" + TOKEN
+    # )
