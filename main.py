@@ -56,9 +56,11 @@ async def ping(update:Update, context: ContextTypes.DEFAULT_TYPE):
     print(update.effective_chat.id)
 async def poland(update: Update, ctx:ContextTypes.DEFAULT_TYPE):
     # dtNow = datetime.now(timedelta=timedelta(hours=1))
-    dtNow = datetime.now(tz=timezone.utc)
-    tz_poland = timezone(timedelta(hours=7), name="poland")
+    # dtNow = datetime.now(tz=timezone.utc)
+    # tz_poland = timezone(timedelta(hours=7), name="poland")
+
     # dtPoland = datetime.now(tz=tz_poland)
+    # dtNowPoland2 = datetime.now(tz=timezone("poland"))
     dtNowPoland = datetime.now(timezone(timedelta(hours=2)))
     await ctx.bot.send_message(chat_id=update.effective_chat.id, text=str(dtNowPoland))
 async def japan(update: Update, ctx:ContextTypes.DEFAULT_TYPE):
