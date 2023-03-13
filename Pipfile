@@ -5,7 +5,6 @@ name = "pypi"
 
 [packages]
 python-telegram-bot = "*"
-deepl = "~=1.11.0"
 pytz = "*"
 python-dotenv = "*"
 

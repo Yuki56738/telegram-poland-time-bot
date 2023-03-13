@@ -1,18 +1,13 @@
 #!/usr/bin/env python3
 
 import datetime
-import re
 
 import pytz as pytz
-import telegram.ext
-from telegram.ext import Updater
 from telegram.ext import *
 from telegram import *
 import logging
 from datetime import *
 import os
-import deepl
-from deepl import *
 from dotenv import load_dotenv
 
 load_dotenv()
