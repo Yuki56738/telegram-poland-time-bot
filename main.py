@@ -13,8 +13,11 @@ from datetime import *
 import os
 import deepl
 from deepl import *
+from dotenv import load_dotenv
 
-TOKEN = "5479025637:AAGuj9HWaAW3hzXWw3oXoKDBoYzCflvvun0"
+load_dotenv()
+
+TOKEN = os.environ.get("TL_TOKEN")
 # from telegram.ext import Application
 
 """
